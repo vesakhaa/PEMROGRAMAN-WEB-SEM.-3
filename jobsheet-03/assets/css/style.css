@@ -1,6 +1,6 @@
-@media (max-width: 1400px) {
-    main  {
-        max-width: 1000px;
+@media (min-width: 1400px) {
+    main {
+        max-width: 1000px; /* Melebarkan kontainer di monitor besar */
     }
 }
 
