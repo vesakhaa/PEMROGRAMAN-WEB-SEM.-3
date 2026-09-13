@@ -9,7 +9,7 @@ async function muatDaftarBuku() {
 
     try {
         // simulasi delay jaringan agar loading indicator terlihat
-        await new Promise((resolve) => setTimeout(resolve, 600));
+        await new Promise((resolve) => setTimeout(resolve, 3000));
 
         const res = await fetch("../data/buku.json");
         if (!res.ok) {
