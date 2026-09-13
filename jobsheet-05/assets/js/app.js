@@ -33,7 +33,9 @@ function initTableFilter() {
     const keyword = input.value.toLowerCase();
     const rows = table.querySelectorAll("tbody tr");
     rows.forEach(function (row) {
-      const teks = row.textContent.toLowerCase();
+      const kolomJudul = row.querySelector("td");
+      const teks = kolomJudul ? kolomJudul.textContent.toLowerCase() : "";
+      
       row.style.display = teks.includes(keyword) ? "" : "none";
     });
   });
