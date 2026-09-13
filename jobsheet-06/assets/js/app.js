@@ -110,6 +110,41 @@ function initValidasiForm() {
     });
 }
 
+async function muatDataGenerik(urlJson, containerId, kolomKeys) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    try {
+        const response = await fetch(urlJson);
+        if (!response.ok) throw new Error("Gagal mengambil data");
+        
+        const listData = await response.json();
+        container.innerHTML = ""; // Kosongkan tbody
+
+        listData.forEach(item => {
+            const tr = document.createElement("tr");
+            
+            // Buat td dinamis berdasarkan array kolomKeys
+            let tdContent = kolomKeys.map(key => `<td>${item[key] ?? "-"}</td>`).join("");
+            
+            // Tambahkan kolom Aksi (Edit & Hapus)
+            tdContent += `
+                <td>
+                    <button type="button" class="btn btn-warning btn-sm">Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm btn-hapus">Hapus</button>
+                </td>
+            `;
+            
+            tr.innerHTML = tdContent;
+            container.appendChild(tr);
+        });
+
+        if (typeof updateCounter === "function") updateCounter();
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     initNavToggle();
     initHapusConfirm();
