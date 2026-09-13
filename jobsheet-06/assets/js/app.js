@@ -15,14 +15,15 @@ function initNavToggle() {
 // tombol .btn-hapus belum tentu ada saat DOMContentLoaded.
 function initHapusConfirm() {
     document.addEventListener("click", function (e) {
+        console.log("Elemen yang diklik (e.target):", e.target);
         const btn = e.target.closest(".btn-hapus");
         if (!btn) return;
 
         const row = btn.closest("tr");
         const nama = row ? row.querySelector("td")?.textContent : "data ini";
-        const yakin = confirm("Yakin ingin menghapus \"" + nama + "\"?");
-        if (yakin && row) {
+        if (confirm(`Yakin ingin menghapus "${nama}"?`)) {
             row.remove();
+            if (typeof updateCounter === "function") updateCounter();
         }
     });
 }

@@ -51,6 +51,6 @@ document.addEventListener("DOMContentLoaded", function (){
     muatDataGenerik(
         "../data/buku.json", 
         "daftar-buku-body", 
-        ["judul", "pengarang", "tahun", "stok"]
+        ["judul", "pengarang", "Kategori", "tahun", "stok"]
     );
 });
