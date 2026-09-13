@@ -216,6 +216,29 @@ footer {
     border: 1px solid #cdd4da;
     border-radius: 4px;
 }
+.table-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1.25rem;
+    gap: 1rem;
+    flex-wrap: wrap; /* Supaya otomatis menumpuk rapi di layar HP */
+}
+
+.table-toolbar .search-box {
+    flex: 1;
+    max-width: 400px;
+}
+
+.table-counter {
+    font-size: 0.875rem;
+    color: #55677a;
+    background-color: #eef4fa;
+    padding: 0.4rem 0.85rem;
+    border-radius: 20px;
+    font-weight: 600;
+    white-space: nowrap;
+}
 
 /* ===== Responsive Breakpoints ===== */
 
