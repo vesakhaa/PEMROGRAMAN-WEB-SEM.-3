@@ -38,4 +38,12 @@ async function muatDaftarBuku() {
     }
 }
 
+// Menambahkan event listener untuk tombol "Muat Ulang"
+const btnReload = document.getElementById("btn-reload");
+if (btnReload) {
+    btnReload.addEventListener("click", function () {
+        muatDaftarBuku();
+    });
+}
+
 document.addEventListener("DOMContentLoaded", muatDaftarBuku);
