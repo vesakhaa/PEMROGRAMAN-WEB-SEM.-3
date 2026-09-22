@@ -8,9 +8,9 @@ $isbn = trim($_POST['isbn'] ?? '');
 $stok = $_POST['stok'] ?? '';
 $kategori = trim($_POST['kategori'] ?? '');
 
-// Validasi server-side — wajib ada meski sudah divalidasi JS di Jobsheet 5,
-// karena validasi client bisa dilewati (nonaktifkan JS / kirim request manual).
+// Validasi server-side
 $errors = [];
+
 if ($judul === '') {
     $errors[] = "Judul wajib diisi.";
 }
@@ -23,15 +23,17 @@ if (!is_numeric($tahun) || $tahun < 1900 || $tahun > 2026) {
 if (!is_numeric($stok) || $stok < 0) {
     $errors[] = "Stok tidak boleh negatif.";
 }
-if (!empty($isbn) && !preg_match('/^[0-9\-]+$/', $isbn)) {
-    $_SESSION['flash_message'] = "Format ISBN tidak valid! Hanya boleh berisi angka dan tanda hubung.";
-    $_SESSION['flash_type'] = "danger"; 
-    header("Location: tambah.php");
-    exit;
+
+
+if ($isbn !== '' && !preg_match('/^[0-9\-]+$/', $isbn)) {
+    $errors[] = "Format ISBN tidak valid! Hanya boleh berisi angka dan tanda hubung.";
 }
 
 if (!empty($errors)) {
-    $_SESSION['flash'] = ['type' => 'error', 'pesan' => implode(' ', $errors)];
+    $_SESSION['flash'] = [
+        'type' => 'error', 
+        'pesan' => implode(' ', $errors)
+    ];
     header('Location: tambah.php');
     exit;
 }

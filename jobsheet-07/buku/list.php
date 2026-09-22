@@ -26,6 +26,7 @@ $daftarBuku = $_SESSION['buku'] ?? [];
                         <th>Pengarang</th>
                         <th>Tahun</th>
                         <th>Stok</th>
+                        <th>ISBN</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -41,6 +42,7 @@ $daftarBuku = $_SESSION['buku'] ?? [];
                             <td><?php echo $buku['pengarang']; ?></td>
                             <td><?php echo $buku['tahun']; ?></td>
                             <td><?php echo $buku['stok']; ?></td>
+                            <td><?php echo $buku['isbn']; ?></td>              
                             <td>
                                 <button type="button">Edit</button>
                                 <button type="button" class="btn-hapus">Hapus</button>
