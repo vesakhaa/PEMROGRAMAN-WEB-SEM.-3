@@ -25,4 +25,10 @@ $totalAnggota = count($_SESSION['anggota'] ?? []);
                 <p>0</p>
             </article>
         </section>
+
+    <form action="reset_session.php" method="POST" onsubmit="return confirm('Yakin ingin menghapus seluruh data session?');" style="display: inline;">
+        <button type="submit" style="padding: 8px 16px; background-color: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+            Reset Data
+        </button>
+    </form>
 <?php include __DIR__ . '/includes/footer.php'; ?>
