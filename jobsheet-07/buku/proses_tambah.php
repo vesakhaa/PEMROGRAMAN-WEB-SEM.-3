@@ -23,6 +23,12 @@ if (!is_numeric($tahun) || $tahun < 1900 || $tahun > 2026) {
 if (!is_numeric($stok) || $stok < 0) {
     $errors[] = "Stok tidak boleh negatif.";
 }
+if (!empty($isbn) && !preg_match('/^[0-9\-]+$/', $isbn)) {
+    $_SESSION['flash_message'] = "Format ISBN tidak valid! Hanya boleh berisi angka dan tanda hubung.";
+    $_SESSION['flash_type'] = "danger"; 
+    header("Location: tambah.php");
+    exit;
+}
 
 if (!empty($errors)) {
     $_SESSION['flash'] = ['type' => 'error', 'pesan' => implode(' ', $errors)];
