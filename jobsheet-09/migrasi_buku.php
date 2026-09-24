@@ -17,7 +17,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 }
 
 // 2. Siapkan Query INSERT
-$sql = "INSERT INTO buku (judul, pengarang, tahun, stok) VALUES (:judul, :pengarang, :tahun, :stok)";
+$sql = "INSERT INTO buku (judul, pengarang, isbn, tahun, stok) VALUES (:judul, :pengarang, :isbn, :tahun, :stok)";
 $stmt = $pdo->prepare($sql);
 
 $sukses = 0;
@@ -31,6 +31,7 @@ foreach ($bukuArray as $buku) {
         $stmt->execute([
             'judul'     => $buku['judul'],
             'pengarang' => $buku['pengarang'],
+            'isbn'      => $buku['isbn'],
             'tahun'     => $buku['tahun'],
             'stok'      => $buku['stok']
         ]);
