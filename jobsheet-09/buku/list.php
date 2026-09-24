@@ -52,6 +52,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                     <tr>
                         <th>Judul</th>
                         <th>Pengarang</th>
+                        <th>ISBN</th>
                         <th>Tahun</th>
                         <th>Stok</th>
                         <th>Aksi</th>
@@ -67,6 +68,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                         <tr>
                             <td><?php echo $buku['judul']; ?></td>
                             <td><?php echo $buku['pengarang']; ?></td>
+                            <td><?php echo $buku['isbn']; ?></td>                           
                             <td><?php echo $buku['tahun']; ?></td>
                             <td><?php echo $buku['stok']; ?></td>
                             <td>
