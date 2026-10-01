@@ -29,6 +29,14 @@ unset($_SESSION['flash']);
                     <label for="password">Password</label><br>
                     <input type="password" id="password" name="password" required>
                 </p>
+
+                <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px; margin-bottom: 15px;">
+                    <input type="checkbox" name="remember" id="remember" style="margin: 0; padding: 0; width: 16px; height: 16px; cursor: pointer; display: block;">
+                    <label for="remember" style="margin: 0; padding: 0; font-size: 14px; color: #333; font-weight: normal; cursor: pointer; display: block; line-height: 1;">
+                        Ingat Saya
+                    </label>
+                </div>
+
                 <p>
                     <button type="submit">Masuk</button>
                 </p>

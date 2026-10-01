@@ -15,6 +15,11 @@ if ($user && password_verify($password, $user['password'])) {
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['nama'] = $user['nama'];
     $_SESSION['role'] = $user['role'];
+
+    if (isset($_POST['remember'])) {
+        setcookie('remember_username', $user['username'], time() + (86400 * 30), "/"); //berlaku untuk 30 hari
+    }
+
     header('Location: ../index.php');
     exit;
 }
