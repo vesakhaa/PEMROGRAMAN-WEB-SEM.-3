@@ -1,6 +1,9 @@
 <?php
 require __DIR__ . '/../includes/auth.php';
+require __DIR__ . '/../includes/csrf.php';
 require __DIR__ . '/../includes/koneksi.php';
+
+csrf_verify();
 
 $nama = trim($_POST['nama'] ?? '');
 $noAnggota = trim($_POST['no_anggota'] ?? '');
@@ -10,6 +13,9 @@ $noHp = trim($_POST['no_hp'] ?? '');
 $errors = [];
 if ($nama === '') {
     $errors[] = "Nama wajib diisi.";
+}
+if ($noHp !== '' && !preg_match('/^[0-9]+$/', $noHp)) {
+    $errors[] = "No. HP tidak valid! Hanya boleh berisi angka.";
 }
 if ($noAnggota === '') {
     $errors[] = "No. Anggota wajib diisi.";

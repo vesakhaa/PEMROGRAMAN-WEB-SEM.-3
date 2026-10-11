@@ -54,6 +54,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                         <th>Pengarang</th>
                         <th>Tahun</th>
                         <th>Stok</th>
+                        <th>Tanggal Ditambahkan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -69,6 +70,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                             <td><?php echo e($buku['pengarang']); ?></td>
                             <td><?php echo $buku['tahun']; ?></td>
                             <td><?php echo $buku['stok']; ?></td>
+                            <td><?php echo $buku['tanggal_ditambahkan']; ?></td>
                             <td>
                                 <a href="edit.php?id=<?php echo $buku['id']; ?>" class="btn-edit">Edit</a>
                                 <form class="form-hapus" method="post" action="hapus.php">

@@ -41,7 +41,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                 <form method="get" action="list.php">
                     <span>
                         <label for="search-input">Cari Nama Anggota</label><br>
-                        <input type="text" id="search-input" name="q" value="<?php echo $keyword; ?>" placeholder="Ketik nama anggota...">
+                        <input type="text" id="search-input" name="q" value="<?php echo e($keyword); ?>" placeholder="Ketik nama anggota...">
                     </span>
                     <button type="submit">Cari</button>
                 </form>

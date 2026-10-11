@@ -13,7 +13,7 @@ body {
 }
 
 a {
-    color: #1d5b8a;
+    color: #0037ff;
     text-decoration: none;
 }
 
@@ -23,7 +23,7 @@ a:hover {
 
 /* ===== Header & Navbar (Flexbox) ===== */
 header {
-    background-color: #1d5b8a;
+    background-color: #0037ff;
     color: #fff;
     padding: 1rem 1.5rem;
     display: flex;
@@ -76,7 +76,7 @@ section {
 
 section h2 {
     margin-bottom: 1rem;
-    color: #1d5b8a;
+    color: #0037ff;
 }
 
 /* ===== Kartu Statistik (CSS Grid) ===== */

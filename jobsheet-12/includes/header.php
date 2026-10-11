@@ -38,6 +38,11 @@ $base = $__rel === '' ? '' : str_repeat('../', substr_count($__rel, '/') + 1);
                 <li><a href="<?php echo $base; ?>peminjaman/tambah.php">Peminjaman Baru</a></li>
                 <li><a href="<?php echo $base; ?>peminjaman/kembali.php">Pengembalian</a></li>
                 <li><a href="<?php echo $base; ?>peminjaman/riwayat.php">Riwayat</a></li>
+                <li><form action="reset_session.php" method="POST" onsubmit="return confirm('Yakin ingin menghapus seluruh data session?');" style="display: inline;">
+        <button type="submit" style="color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+            Reset Data
+        </button>
+    </form></li>
                 <?php endif; ?>
             </ul>
         </nav>
