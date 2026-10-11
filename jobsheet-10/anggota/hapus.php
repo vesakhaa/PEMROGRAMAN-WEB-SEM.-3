@@ -1,13 +1,6 @@
 <?php
 require __DIR__ . '/../includes/auth.php';
-
-//Pengecekan Role Admin
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    $_SESSION['flash'] = ['type' => 'error', 'pesan' => 'Akses ditolak: Hanya Admin yang dapat menghapus data anggota.'];
-    header('Location: list.php');
-    exit;
-}
-
+require __DIR__ . '/../includes/csrf.php';
 require __DIR__ . '/../includes/koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
