@@ -14,6 +14,21 @@ if ($anggotaId === '' || $bukuId === '') {
     exit;
 }
 
+$stmtCekTerlambat = $pdo->prepare("
+    SELECT COUNT(*) FROM peminjaman 
+    WHERE anggota_id = :anggota_id 
+    AND tanggal_kembali IS NULL 
+    AND (CURRENT_DATE - tanggal_pinjam) > 14
+");
+$stmtCekTerlambat->execute(['anggota_id' => $_POST['anggota_id']]);
+$jumlahTerlambat = $stmtCekTerlambat->fetchColumn();
+
+if ($jumlahTerlambat > 0) {
+    $_SESSION['flash_error'] = "Peminjaman ditolak! Anggota ini memiliki buku yang terlambat dikembalikan lebih dari 14 hari.";
+    header("Location: tambah.php"); 
+    exit;
+}
+
 try {
     $pdo->beginTransaction();
 
