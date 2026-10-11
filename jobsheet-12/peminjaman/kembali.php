@@ -9,7 +9,8 @@ unset($_SESSION['flash']);
 
 $keyword = trim($_GET['q'] ?? '');
 
-$sqlDasar = "SELECT p.id, b.judul, a.nama, p.tanggal_pinjam
+$sqlDasar = "SELECT p.id, b.judul, a.nama, p.tanggal_pinjam, 
+                    (p.tanggal_pinjam + INTERVAL '14 days')::DATE AS tanggal_jatuh_tempo
              FROM peminjaman p
              JOIN buku b ON b.id = p.buku_id
              JOIN anggota a ON a.id = p.anggota_id
@@ -27,7 +28,7 @@ $daftarAktif = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <h2>Pengembalian Buku</h2>
 
             <?php if ($flash): ?>
-                <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo e($flash['pesan']); ?></p>
+                <p class="flash flash-<?php echo e($flash['type']); ?>"><?php echo e($flash['pesan']); ?></p>
             <?php endif; ?>
 
             <div class="search-box">
@@ -47,24 +48,26 @@ $daftarAktif = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>Anggota</th>
                         <th>Buku</th>
                         <th>Tgl Pinjam</th>
+                        <th>Jatuh Tempo</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if (empty($daftarAktif)): ?>
                     <tr>
-                        <td colspan="4">Tidak ada peminjaman aktif.</td>
+                        <td colspan="5">Tidak ada peminjaman aktif.</td>
                     </tr>
                     <?php else: ?>
                         <?php foreach ($daftarAktif as $trx): ?>
                         <tr>
                             <td><?php echo e($trx['nama']); ?></td>
                             <td><?php echo e($trx['judul']); ?></td>
-                            <td><?php echo $trx['tanggal_pinjam']; ?></td>
+                            <td><?php echo e($trx['tanggal_pinjam']); ?></td>
+                            <td><?php echo e($trx['tanggal_jatuh_tempo']); ?></td>
                             <td>
                                 <form method="post" action="proses_kembali.php">
                                     <?php echo csrf_field(); ?>
-                                    <input type="hidden" name="id" value="<?php echo $trx['id']; ?>">
+                                    <input type="hidden" name="id" value="<?php echo (int)$trx['id']; ?>">
                                     <button type="submit">Kembalikan</button>
                                 </form>
                             </td>
